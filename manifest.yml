@@ -1,0 +1,12 @@
+---
+applications:
+- name: ccmds
+  memory: 384M
+  instances: 1
+  host: ccmds
+  path: ./target/ccmds-0.0.1-SNAPSHOT.jar
+  timeout: 120
+  services:
+   - SufMySQL
+  env:
+    JAVA_OPTS: -Djava.security.egd=file:///dev/urandom

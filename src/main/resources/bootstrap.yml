@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ccmds
+  cloud:
+    config:
+     uri: http://springconfigccm.emea.fe.gopivotal.com/
