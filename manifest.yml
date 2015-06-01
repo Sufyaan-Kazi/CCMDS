@@ -8,5 +8,6 @@ applications:
   timeout: 120
   services:
    - SufMySQL
+   - eureka-service
   env:
     JAVA_OPTS: -Djava.security.egd=file:///dev/urandom

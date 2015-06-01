@@ -1,6 +1,3 @@
 spring:
   application:
-    name: ccmds
-  cloud:
-    config:
-     uri: http://springconfigccm.emea.fe.gopivotal.com/
+    name: ${vcap.application.application_name:ccmds}
