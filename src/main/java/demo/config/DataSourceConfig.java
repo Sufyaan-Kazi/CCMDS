@@ -4,35 +4,22 @@ import java.sql.DriverManager;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
+import demo.utils.Logger;
+
 @Configuration
 @ConfigurationProperties(prefix="spring.datasource")
 @Profile("local")
-//@EnableAutoConfiguration
-//@EnableConfigurationProperties
-//@PropertySources(value = { @PropertySource("classpath:/jdbc.properties") })
 public class DataSourceConfig {
-
-	//@Autowired
-	//private Environment env;
-	
-	@Value("${driverClassName:Hello}")
 	private String driverClassName;
-	@Value("${url:Hello}")
 	private String url;
-	@Value("${username:Hello}")
 	private String username;
-	@Value("${password:Hello}")
 	private String password;
-
-	//@Autowired
-	//public static final DataSourceConfig INSTANCE = new DataSourceConfig();
 
 	public DataSourceConfig() {
 		super();
@@ -48,13 +35,7 @@ public class DataSourceConfig {
 			dataSource.setUrl(this.url);
 			dataSource.setUsername(this.username);
 			dataSource.setPassword(this.password);
-			
-			//Class.forName(env.getRequiredProperty("driverClassName"));
-			//dataSource = new SimpleDriverDataSource();
-			//dataSource.setDriver(DriverManager.getDriver(env.getRequiredProperty("url")));
-			//dataSource.setUrl(env.getRequiredProperty("url"));
-			//dataSource.setUsername(env.getRequiredProperty("username"));
-			//dataSource.setPassword(env.getRequiredProperty("password"));
+			Logger.INSTANCE.log("Connected to: " + this.url);
 		} catch (Exception e) {
 			throw new IllegalStateException("An Exception occurred initialising datasource", e);
 		}
